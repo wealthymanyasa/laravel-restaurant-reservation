@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('guest_number');
             $table->string('status')->default('pending');
-            $table->string('location');
+            $table->enum('location',['front','inside','outside']);
             $table->timestamps();
         });
     }
