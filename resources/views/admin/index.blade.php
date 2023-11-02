@@ -9,14 +9,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <section>
-                    <div id="main" class="main-content flex-1 mt-12 pb-24 md:pb-5">
+                    <div id="main" class="main-content flex-1  pb-24 md:pb-5">
 
-                        <div class=" pt-3">
+
                             <div
-                                class="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
+                                class="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-purple-800 p-4 shadow text-2xl text-white">
                                 <h1 class="font-bold pl-2">Analytics</h1>
                             </div>
-                        </div>
+
 
                         <div class="flex flex-wrap">
                             <div class="w-full md:w-1/2 xl:w-1/3 p-6">
