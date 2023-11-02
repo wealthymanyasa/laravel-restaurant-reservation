@@ -10,7 +10,12 @@
     @endif
 
     <div class="mt-4 flex items-center justify-between">
-        <form method="POST" action="{{ route('verification.send') }}">
+        <div class="bg-green-400 shadow-lg p-14 rounded-lg">
+
+            <h1 class="text-2xl text-center font-bold uppercase">
+                Reset Password
+            </h1>
+        <form method="POST" action="{{ route('verification.send') }}" class=" flex flex-col justify-center items-center">
             @csrf
 
             <div>
@@ -26,6 +31,8 @@
             <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 {{ __('Log Out') }}
             </button>
+
         </form>
+        </div>
     </div>
 </x-guest-layout>

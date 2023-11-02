@@ -31,13 +31,16 @@
                                     Telephone Number
                                 </th>
                                 <th scope="col" class="px-6 py-3">
+                                    Reservation Date
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     Guest Number
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Table
                                 </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Action
+                                <th scope="col" class="px-6 py-3 text-center">
+                                    Actions
                                 </th>
                             </tr>
                         </thead>
@@ -60,6 +63,10 @@
                                     <td scope="row"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ $reservation->tel_number }}
+                                    </td>
+                                    <td scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $reservation->res_date }}
                                     </td>
                                     <td scope="row"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">

@@ -2,10 +2,10 @@
 
 namespace App\Enums;
 
-//enum TableLocation:string
+enum TableLocation:string
 {
-    // case Front = 'front';
-    // case Inside = 'inside';
-    // case Outside = 'outside';
+    case Front = 'front';
+    case Inside = 'inside';
+    case Outside = 'outside';
 }
 

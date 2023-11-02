@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\TableStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ReservationStoreRequest;
 use App\Models\Reservation;
 use App\Models\Table;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -28,7 +30,7 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        $tables = Table::all();
+        $tables = Table::where('status', TableStatus::Available)->get();
         return view('admin.reservations.create', compact('tables'));
     }
 
@@ -40,19 +42,20 @@ class ReservationController extends Controller
      */
     public function store(ReservationStoreRequest $request)
     {
+        $table = Table::findOrFail($request->table_id);
+        if($request->guest_number > $table->guest_number){
+            return back()->with('warning', 'Please choose a table based on guests that it can accommodate.');
+        }
+        $request_date = Carbon::parse($request->res_date);
+        foreach($table->reservations as $res){
+            if($res->res_date->format('Y-m-d') == $request_date->format('Y-m-d')){
+                return back()->with('warning', 'The table is reserved for this date. Please choose another table.');
 
+            }
+        }
         Reservation::create($request->validated());
-        // Reservation::create([
-        //     'first_name' => $request->first_name,
-        //     'last_name' =>  $request->last_name,
-        //     'email' =>  $request->email,
-        //     'tel_number' =>  $request->tel_number,
-        //     'guest_number' =>  $request->guest_number,
-        //     'res_date' =>  $request->res_date,
-        //     'table_id' =>  $request->table_id,
-        // ]);
 
-        return to_route('admin.reservations.index');
+        return to_route('admin.reservations.index')->with('success', 'Reservation created successfully');
     }
 
     /**
@@ -87,9 +90,20 @@ class ReservationController extends Controller
      */
     public function update(ReservationStoreRequest $request, Reservation $reservation)
     {
+        $table = Table::findOrFail($request->table_id);
+        if($request->guest_number > $table->guest_number){
+            return back()->with('warning', 'Please choose a table based on guests that it can accommodate.');
+        }
+        $request_date = Carbon::parse($request->res_date);
+        foreach($table->reservations as $res){
+            if($res->res_date->format('Y-m-d') == $request_date->format('Y-m-d')){
+                return back()->with('warning', 'The table is reserved for this date. Please choose another table.');
+
+            }
+        }
         $reservation->update($request->validated());
 
-        return to_route('admin.reservations.index');
+        return to_route('admin.reservations.index')->with('info', 'Reservation updated successfully');;
     }
 
     /**
@@ -101,6 +115,6 @@ class ReservationController extends Controller
     public function destroy(Reservation $reservation)
     {
         $reservation->delete();
-        return to_route('admin.reservations.index');
+        return to_route('admin.reservations.index')->with('danger', 'Reservation deleted successfully');
     }
 }

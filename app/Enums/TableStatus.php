@@ -2,9 +2,9 @@
 
 namespace App\Enums;
 
-//enum SocialNetwork: string
+enum TableStatus: string
 {
-//    case Pending = 'pending';
-//    case Available = 'available';
-//    case Unavailable = 'unavailable';
+   case Pending = 'pending';
+   case Available = 'available';
+   case Unavailable = 'unavailable';
 }
