@@ -11,7 +11,7 @@
                 <section>
                     <div id="main" class="main-content flex-1  pb-24 md:pb-5">
 
-
+                            <h2 class="text-xl uppercase pb-5 font-extrabold text-purple-600">ADMIN Dashboard</h2>
                             <div
                                 class="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-purple-800 p-4 shadow text-2xl text-white">
                                 <h1 class="font-bold pl-2">Analytics</h1>
@@ -132,7 +132,7 @@
 
 
 
-                            <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+                            {{-- <div class="w-full md:w-1/2 xl:w-1/3 p-6">
                                 <!--Table Card-->
                                 <div class="bg-white border-transparent rounded-lg shadow-xl">
                                     <div
@@ -161,7 +161,7 @@
                                     </div>
                                 </div>
                                 <!--/table Card-->
-                            </div>
+                            </div> --}}
 
 
 
